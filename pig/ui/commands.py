@@ -1,31 +1,32 @@
 # coding: utf-8
 
+
 def bus():
-    from .comm.bus import message_bus
+    from ..comm.bus import message_bus
     message_bus()
 
 
 def pubtest():
-    from .comm.pubtest import check_one_two
+    from ..comm.pubtest import check_one_two
     check_one_two()
 
 
 def snoop():
-    from .comm.snoop import snoop
+    from ..comm.snoop import snoop
     snoop()
 
 
 def udev():
-    from .comm.bus import publish_all
-    from .comm.channels import UDEV_EVENTS
-    from udev_monitor import monitor
+    from ..comm.bus import publish_all
+    from ..comm.channels import UDEV_EVENTS
+    from ..lib.udev_monitor import monitor
 
     publish_all(monitor(), channel=UDEV_EVENTS)
 
 
 def show():
-    from .camera import camera_connected
-    from .ui import show_from_sequence
+    from ..camera import camera_connected
+    from ..ui.led import show_from_sequence
 
     show_from_sequence(camera_connected(), pin=17)
 

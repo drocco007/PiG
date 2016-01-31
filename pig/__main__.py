@@ -14,10 +14,13 @@ Options:
 
 from docopt import docopt
 
-arguments = docopt(__doc__, version='PiG 0.1')
+from .ui.commands import commands
 
-from .commands import commands
 
+arguments = docopt(__doc__, version='PiG 0.2')
+
+
+# docopt command dispatcher. This is not my favorite, but... meh.
 for subcommand in commands.keys():
     if arguments[subcommand]:
         commands[subcommand]()

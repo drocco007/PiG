@@ -1,19 +1,15 @@
 import logging
 import sys
 
-logging.basicConfig(level=logging.DEBUG)
-
 from . import bus
 
 
-if len(sys.argv) > 1:
-    host = sys.argv[1]
-else:
-    host = 'localhost'
+def snoop(host='localhost'):
+    logging.basicConfig(level=logging.DEBUG)
+    log = logging.getLogger(__name__)
 
+    socket = bus.connect_subscribe(host=host)
 
-socket = bus.connect_subscribe(host=host)
-
-while True:
-    message = socket.recv()
-    logging.info('message: %s', message.decode('utf8'))
+    while True:
+        message = socket.recv()
+        log.info(message.decode('utf8'))

@@ -25,13 +25,13 @@ def connect_publish(host='localhost', port=5555, scheme='tcp'):
     return socket
 
 
-def connect_subscribe(host='localhost', subscriptions=('',), port=5556,
+def connect_subscribe(host='localhost', subscriptions=(u'',), port=5556,
                       scheme='tcp'):
     socket = get_socket(zmq.SUB)
     socket.connect('{}://{}:{}'.format(scheme, host, port))
 
     for subscription in subscriptions:
-        socket.setsockopt(zmq.SUBSCRIBE, subscription)
+        socket.setsockopt_string(zmq.SUBSCRIBE, subscription)
 
     return socket
 

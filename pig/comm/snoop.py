@@ -11,5 +11,5 @@ def snoop(host='localhost'):
     socket = bus.connect_subscribe(host=host)
 
     while True:
-        message = socket.recv()
-        log.info(message.decode('utf8'))
+        message = socket.recv_string()
+        log.info(message)

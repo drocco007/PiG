@@ -23,9 +23,17 @@ def udev():
     publish_all(monitor(), channel=UDEV_EVENTS)
 
 
+def show():
+    from .camera import camera_connected
+    from .ui import show_from_sequence
+
+    show_from_sequence(camera_connected(), pin=17)
+
+
 commands = {
     'bus': bus,
     'pubtest': pubtest,
     'snoop': snoop,
     'udev': udev,
+    'show': show,
 }

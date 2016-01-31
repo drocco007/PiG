@@ -2,6 +2,7 @@
 
 Usage:
     pig [bus | snoop | pubtest | udev]
+    pig show [camera | gps]
     pig (-h | --help)
     pig --version
 

@@ -2,14 +2,14 @@
 
 from time import sleep
 
-from .bus import connect_publish
+from .bus import publish
 
 
 channels = u'a®¢§¶☭–—·×•¡±¿ß'
 
 
 def check_one_two(host='localhost', port=5555, scheme='tcp'):
-    socket = connect_publish(host=host, port=port, scheme=scheme)
+    socket = publish(host=host, port=port, scheme=scheme)
 
     # Wait to give the connection time to settle
     sleep(0.5)

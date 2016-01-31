@@ -1,9 +1,9 @@
-from .comm.bus import connect_subscribe
+from .comm.bus import subscribe
 from .comm.channels import UDEV_EVENTS
 
 
 def camera_connected():
-    socket = connect_subscribe(subscriptions=(UDEV_EVENTS,))
+    socket = subscribe(subscriptions=(UDEV_EVENTS,))
 
     while True:
         message = socket.recv_string()

@@ -19,14 +19,14 @@ def get_socket(socket_type):
     return get_context().socket(socket_type)
 
 
-def connect_publish(host='localhost', port=5555, scheme='tcp'):
+def publish(host='localhost', port=5555, scheme='tcp'):
     socket = get_socket(zmq.PUB)
     socket.connect('{}://{}:{}'.format(scheme, host, port))
     return socket
 
 
-def connect_subscribe(host='localhost', subscriptions=(u'',), port=5556,
-                      scheme='tcp'):
+def subscribe(host='localhost', subscriptions=(u'',), port=5556,
+              scheme='tcp'):
     socket = get_socket(zmq.SUB)
     socket.connect('{}://{}:{}'.format(scheme, host, port))
 
@@ -54,14 +54,14 @@ def message_bus(pub_port=5556, sub_port=5555):
 
 
 def init_message_bus(pub_port=5556, sub_port=5555):
-    from ..process_utils import spawn_daemon_process
+    from ..lib.process_utils import spawn_daemon_process
 
     return [spawn_daemon_process(message_bus, call_kw={'pub_port': pub_port,
                                                        'sub_port': sub_port})]
 
 
 def publish_all(seq, channel='', host='localhost', port=5555, scheme='tcp'):
-    socket = connect_publish(host=host, port=port, scheme=scheme)
+    socket = publish(host=host, port=port, scheme=scheme)
 
     for message in seq:
         socket.send_string(u''.join([channel, message]))

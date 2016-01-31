@@ -8,7 +8,7 @@ def snoop(host='localhost'):
     logging.basicConfig(level=logging.DEBUG)
     log = logging.getLogger(__name__)
 
-    socket = bus.connect_subscribe(host=host)
+    socket = bus.subscribe(host=host)
 
     while True:
         message = socket.recv_string()

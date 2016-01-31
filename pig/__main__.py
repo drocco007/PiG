@@ -1,7 +1,7 @@
 """PiG: The Raspberry Pi Geotagger
 
 Usage:
-    pig [bus | snoop | pubtest]
+    pig [bus | snoop | pubtest | udev]
     pig (-h | --help)
     pig --version
 

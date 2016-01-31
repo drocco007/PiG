@@ -58,3 +58,10 @@ def init_message_bus(pub_port=5556, sub_port=5555):
 
     return [spawn_daemon_process(message_bus, call_kw={'pub_port': pub_port,
                                                        'sub_port': sub_port})]
+
+
+def publish_all(seq, channel='', host='localhost', port=5555, scheme='tcp'):
+    socket = connect_publish(host=host, port=port, scheme=scheme)
+
+    for message in seq:
+        socket.send_string(u''.join([channel, message]))

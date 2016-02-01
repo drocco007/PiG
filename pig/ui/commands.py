@@ -27,8 +27,9 @@ def udev():
 def show():
     from ..camera import camera_connected
     from ..ui.led import show_from_sequence
+    from ..comm.channels import udev_channel
 
-    show_from_sequence(camera_connected(), pin=17)
+    show_from_sequence(camera_connected(udev_channel()), pin=17)
 
 
 commands = {

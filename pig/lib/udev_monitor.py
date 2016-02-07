@@ -31,3 +31,13 @@ def monitor():
         for spec, name in [camera, gps]:
             if matches(device, spec):
                 yield ' '.join([device['ACTION'], name])
+
+
+def is_camera_connected():
+    context = pyudev.Context()
+
+    for device in context.list_devices(subsystem='usb'):
+        if matches(device, camera[0]):
+            return True
+    else:
+        return False

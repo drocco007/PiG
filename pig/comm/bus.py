@@ -63,5 +63,8 @@ def init_message_bus(pub_port=5556, sub_port=5555):
 def publish_all(seq, channel='', host='localhost', port=5555, scheme='tcp'):
     socket = publish(host=host, port=port, scheme=scheme)
 
+    from time import sleep
+    sleep(0.1)
+
     for message in seq:
         socket.send_string(u''.join([channel, message]))

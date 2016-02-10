@@ -32,10 +32,16 @@ def show():
     show_from_sequence(camera_connected(udev_channel()), pin=17)
 
 
+def demo():
+    from ..tools.monodemo import main
+    main()
+
+
 commands = {
     'bus': bus,
     'pubtest': pubtest,
     'snoop': snoop,
     'udev': udev,
     'show': show,
+    'demo': demo,
 }
